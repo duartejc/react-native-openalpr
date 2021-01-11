@@ -11,6 +11,8 @@ const ALPRCamera = requireNativeComponent('ALPRCamera', Camera, {
   },
 })
 
+console.log('aeaeae');
+
 class Camera extends Component {
   onPlateRecognized = ({ nativeEvent }) =>
     this.props.onPlateRecognized(nativeEvent)
