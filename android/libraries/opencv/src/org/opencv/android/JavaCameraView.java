@@ -53,7 +53,7 @@ public class JavaCameraView extends CameraBridgeViewBase implements PreviewCallb
     protected float widthOffset = 0;
     protected float heightOffset = 0;
 
-    protected Camera mCamera;
+    protected static Camera mCamera;
     protected JavaCameraFrame[] mCameraFrame;
     private SurfaceTexture mSurfaceTexture;
 
@@ -84,6 +84,10 @@ public class JavaCameraView extends CameraBridgeViewBase implements PreviewCallb
 
     public JavaCameraView(Context context, AttributeSet attrs) {
         super(context, attrs);
+    }
+
+    public static Camera getInstance() {
+      return mCamera;
     }
 
     protected boolean initializeCamera(int width, int height) {

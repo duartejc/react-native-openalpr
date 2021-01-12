@@ -116,10 +116,11 @@ public class ALPRCameraManager extends ReactContextBaseJavaModule implements Lif
         int ALPRCameraTorchModeAuto = 2;
     };
 
-    public ALPRCameraManager(ReactApplicationContext reactContext) {
-        super(reactContext);
-        reactContext.addLifecycleEventListener(this);
-    }
+    public interface ALPRCameraFlashMode {
+        int ALPRCameraFlashModeOff = 0;
+        int ALPRCameraFlashModeOn = 1;
+        int ALPRCameraFlashModeAuto = 2;
+    };
 
     @Override
     public Map<String, Object> getConstants() {
