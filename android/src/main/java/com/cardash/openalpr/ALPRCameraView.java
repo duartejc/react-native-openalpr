@@ -54,7 +54,7 @@ public class ALPRCameraView extends JavaCameraView implements ICameraView {
         super(context, attrs);
     }
 
-    @Override // Overrides the setCameraReference() method in JavaCameraView
+    //@Override // Overrides the setCameraReference() method in JavaCameraView
     public void setCameraReference() {
       ALPRCamera.setCamera();
     }
