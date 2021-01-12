@@ -49,6 +49,8 @@ public class ReactCameraManager extends SimpleViewManager<FrameLayout> implement
     @Override
     public FrameLayout createViewInstance(final ThemedReactContext context) {
 
+        ALPRCamera.createInstance(); // Initialize ourInstance in ALPRCamera for the getInstance() method to return the reference to itself
+
         LayoutInflater inflater = LayoutInflater.from(context);
         final FrameLayout preview = (FrameLayout) inflater.inflate(R.layout.camera_layout, null);
         layoutRef = new WeakReference<ViewGroup>(preview);
@@ -93,6 +95,12 @@ public class ReactCameraManager extends SimpleViewManager<FrameLayout> implement
         camera.setCountry(country);
     }
 
+    @ReactProp(name = "captureTarget")
+    public void setCaptureTarget(FrameLayout view, int captureTarget) {
+        ICameraView camera = (ICameraView) view.findViewById(R.id.camera_view);
+        camera.setTarget(captureTarget);
+    }
+
     @ReactProp(name = "captureQuality")
     public void setCaptureQuality(FrameLayout view, @Nullable int captureQuality) {
         ICameraView camera = (ICameraView) view.findViewById(R.id.camera_view);
@@ -103,6 +111,12 @@ public class ReactCameraManager extends SimpleViewManager<FrameLayout> implement
     public void setAspect(FrameLayout view, @Nullable int aspect) {
         ICameraView camera = (ICameraView) view.findViewById(R.id.camera_view);
         camera.setAspect(aspect);
+    }
+
+    @ReactProp(name = "type")
+    public void setType(FrameLayout view, int type) {
+        ICameraView camera = (ICameraView) view.findViewById(R.id.camera_view);
+        camera.setType(type);
     }
 
     @ReactProp(name = "zoom")

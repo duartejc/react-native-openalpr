@@ -15,8 +15,21 @@ class Camera extends Component {
   onPlateRecognized = ({ nativeEvent }) =>
     this.props.onPlateRecognized(nativeEvent)
 
+  capture = (options) => {
+    const props = convertNativeProps(this.props);
+    options = {
+      playSoundOnCapture: props.playSoundOnCapture,
+      target: props.captureTarget,
+      captureQuality: props.captureQuality,
+      type: 2,
+      ...options
+    };
+
+    return ALPRCameraManager.capture(options);
+  }
+
   render() {
-    console.log('Fork camera running...');
+    console.log('Fork camera running 2...');
     return (
       <ALPRCamera {...this.props} onPlateRecognized={this.onPlateRecognized} />
     )
@@ -25,6 +38,10 @@ class Camera extends Component {
 
 Camera.propTypes = {
   aspect: PropTypes.number,
+  captureTarget: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]),
   captureQuality: PropTypes.number,
   country: PropTypes.string,
   onPlateRecognized: PropTypes.func,
@@ -33,10 +50,16 @@ Camera.propTypes = {
   torchMode: PropTypes.PropTypes.number,
   zoom: PropTypes.PropTypes.number,
   touchToFocus: PropTypes.bool,
+  type: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]),
+  playSoundOnCapture: PropTypes.bool,
 }
 
 Camera.defaultProps = {
   aspect: ALPRCameraManager.Aspect.fill,
+  captureTarget: ALPRCameraManager.CaptureTarget.cameraRoll,
   captureQuality: ALPRCameraManager.CaptureQuality.medium,
   country: 'us',
   plateOutlineColor: '#0028ff',
@@ -45,6 +68,9 @@ Camera.defaultProps = {
   torchMode: ALPRCameraManager.TorchMode.off,
   touchToFocus: true,
   onPlateRecognized: () => {},
+  type: ALPRCameraManager.Type.back,
+  playSoundOnCapture: true,
+
 }
 
 export default Camera

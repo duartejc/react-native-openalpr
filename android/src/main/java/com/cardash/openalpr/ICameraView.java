@@ -5,10 +5,14 @@ public interface ICameraView {
 
     void setCountry(String country);
 
+    void setTarget(int target);
+
     void setQuality(int quality);
 
     void setAspect(int aspect);
     
+    void setType(int type);
+
     void setZoom(int zoom);
 
     void setPlateBorderColorHex(String colorStr);
