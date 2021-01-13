@@ -29,7 +29,7 @@ class Camera extends Component {
   }
 
   render() {
-    console.log('Fork camera running 2...');
+    console.log('Fork camera running 3...');
     return (
       <ALPRCamera {...this.props} onPlateRecognized={this.onPlateRecognized} />
     )
