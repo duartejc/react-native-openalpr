@@ -241,8 +241,14 @@ public class JavaCameraView extends CameraBridgeViewBase implements PreviewCallb
             }
         }
 
+        setCameraReference(); // Send mCamera reference to ALPRCamera for image capture()
+
         return result;
     }
+
+    public void setCameraReference() {
+      // This method is @Override'd in ALPRCameraView
+    };
 
     private void applyAspect(int surfaceWidth, int surfaceHeight) {
 
