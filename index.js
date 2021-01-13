@@ -16,11 +16,10 @@ class Camera extends Component {
     this.props.onPlateRecognized(nativeEvent)
 
   capture = (options) => {
-    const props = convertNativeProps(this.props);
     options = {
-      playSoundOnCapture: props.playSoundOnCapture,
-      target: props.captureTarget,
-      captureQuality: props.captureQuality,
+      playSoundOnCapture: this.props.playSoundOnCapture,
+      target: this.props.captureTarget,
+      captureQuality: this.props.captureQuality,
       type: 2,
       ...options
     };
